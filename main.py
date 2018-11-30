@@ -1,8 +1,10 @@
 #for python3.x
 #encoding utf8
-
-#usage:>python main.py
+import sys
+#usage          :>python main.py [search_limit]
+#example        :>python main.py 1000000001
 def main():
+        search_limit = int(sys.argv[1])
         FILE_NAME="primes.txt"
         primes=[]
         #read primes from file
@@ -10,7 +12,10 @@ def main():
 
         #snum: suspect number
         snum = primes[-1]
-        for cnt in range(48):
+
+        #set limit
+        cnt_limit = search_limit//2 - 2 
+        for cnt in range(cnt_limit):
                 snum += 2
                 ret = is_prime(snum,primes)
                 if(ret!=False):
